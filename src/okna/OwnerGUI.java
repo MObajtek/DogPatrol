@@ -2,8 +2,8 @@ package okna;
 
 import javax.swing.*;
 
-public class OwnerGUI {
-    private JPanel panel1;
+public class OwnerGUI extends JFrame {
+    private JPanel mainPanel;
     private JTextField walkerAddressField;
     private JTextField walkerNameField;
     private JLabel walkerName;
@@ -18,4 +18,8 @@ public class OwnerGUI {
     private JButton transferMoneyButton;
     private JRadioButton archivalErrandsRadioButton;
     private JRadioButton currentErrandsRadioButton;
+
+    public OwnerGUI(){
+        setContentPane(mainPanel);
+    }
 }

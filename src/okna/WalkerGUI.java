@@ -1,8 +1,8 @@
 package okna;
 import javax.swing.*;
 
-public class WalkerGUI {
-    private JPanel panel1;
+public class WalkerGUI extends JFrame{
+    private JPanel mainPanel;
     private JLabel walkerName;
     private  JTextField walkerNameField;
     private JLabel walkerAddress;
@@ -17,5 +17,11 @@ public class WalkerGUI {
     private JRadioButton archivalErrandsRadioButton;
     private JRadioButton currentErrandsRadioButton;
     private JButton payOutButton;
+    private JComboBox comboBox1;
+
+    public WalkerGUI()  {
+        setContentPane(mainPanel);
+    }
+
 
 }
