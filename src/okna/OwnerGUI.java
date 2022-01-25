@@ -23,4 +23,5 @@ public class OwnerGUI extends JFrame {
         setContentPane(mainPanel);
     }
     private JButton seeProfileButton;
+    private JComboBox comboBox1;
 }

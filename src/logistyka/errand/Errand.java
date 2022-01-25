@@ -1,8 +1,10 @@
 package logistyka.errand;
 
-import logistyka.region_address.Region;
+import logistyka.region_address.Address;
 
 public class Errand {
-    Region region;
+    Address address;
+    int payment;
+    int time;
 
 }

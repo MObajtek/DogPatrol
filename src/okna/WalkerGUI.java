@@ -1,5 +1,7 @@
 package okna;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class WalkerGUI extends JFrame{
     private JPanel mainPanel;
@@ -17,12 +19,20 @@ public class WalkerGUI extends JFrame{
     private JRadioButton archivalErrandsRadioButton;
     private JRadioButton currentErrandsRadioButton;
     private JButton payOutButton;
-    private JComboBox comboBox1;
+    private JButton seeProfileButton;
 
     public WalkerGUI()  {
         setContentPane(mainPanel);
+        seeProfileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new ProfileGUI();
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
     }
 
-    private JButton seeProfileButton;
+
 
 }
