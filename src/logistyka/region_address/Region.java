@@ -20,4 +20,12 @@ public class Region {
     public boolean inRegion(Address a){
         return (((Math.sqrt(Math.pow(a.getX() - currentAddress.getX(), 2) + Math.pow(a.getY() - currentAddress.getY(), 2))))<=radius);
     }
+
+    public Address getCurrentAddress() {
+        return currentAddress;
+    }
+
+    public int getRadius() {
+        return radius;
+    }
 }

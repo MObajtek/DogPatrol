@@ -20,6 +20,7 @@ public class Description {
     public Photo getPhoto() {
         return photo;
     }
+
     public String getName() {
         return name;
     }
@@ -28,6 +29,9 @@ public class Description {
     }
     public Region getHomeRegion() {
         return homeRegion;
+    }
+    public String getBio() {
+        return bio;
     }
     public void setHomeRegion(Region homeRegion) {
         this.homeRegion = homeRegion;
