@@ -1,4 +1,4 @@
-package logistyka;
+package logistyka.review;
 
 public class ReviewList {
 }

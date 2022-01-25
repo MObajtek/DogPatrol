@@ -18,4 +18,5 @@ public class OwnerGUI {
     private JButton transferMoneyButton;
     private JRadioButton archivalErrandsRadioButton;
     private JRadioButton currentErrandsRadioButton;
+    private JButton seeProfileButton;
 }

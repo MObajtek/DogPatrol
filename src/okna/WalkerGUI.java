@@ -17,5 +17,6 @@ public class WalkerGUI {
     private JRadioButton archivalErrandsRadioButton;
     private JRadioButton currentErrandsRadioButton;
     private JButton payOutButton;
+    private JButton seeProfileButton;
 
 }

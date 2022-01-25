@@ -1,5 +1,7 @@
 package logistyka;
 
+import logistyka.region_address.Region;
+
 public class Pet extends Description {
     //age - zwierzaki mogą mieć wiek w miesiącach, trzeba to uwzględnić
     String breed;

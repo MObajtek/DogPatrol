@@ -1,4 +1,4 @@
-package logistyka;
+package logistyka.errand;
 
 public class ErrandList {
 }
