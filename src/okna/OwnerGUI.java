@@ -22,4 +22,5 @@ public class OwnerGUI extends JFrame {
     public OwnerGUI(){
         setContentPane(mainPanel);
     }
+    private JButton seeProfileButton;
 }

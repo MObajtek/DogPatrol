@@ -1,23 +1,25 @@
 package logistyka;
 
+import logistyka.errand.ErrandList;
+import logistyka.review.ReviewList;
+
 public class Walker {
-    /* Czy pola które w przysżłości byłyby chronione,
-    jak adress i kontakt
-    nie zabrać z descr. i wrzucić tu?
-    Tak samo pytanie jak ze schedule
-     */
-    private WalkerDescription walkerDescription;
+    private Description walkerDescription;
     private ReviewList reviewsOfWalker;
     private ErrandList listOfActiveErrands;
     private ErrandList listOfArchivalErrands;
-    private Schedule schedule;
-    boolean authorization; //o ile chcemy
+    //private Schedule schedule;
 
-    public WalkerDescription getWalkerDescription() {
+    public Walker(Description walkerDescription_) {
+        this.walkerDescription = walkerDescription_;
+        this.reviewsOfWalker = new ReviewList();
+        this.listOfActiveErrands = new ErrandList();
+        this.listOfArchivalErrands = new ErrandList();
+    }
+
+    public Description getWalkerDescription() {
         return walkerDescription;
     }
 
-    public Schedule getSchedule() {
-        return schedule;
-    }
+
 }

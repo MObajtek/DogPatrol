@@ -1,11 +1,13 @@
 package logistyka;
 
+import logistyka.region_address.Region;
+
 public class Description {
     private String name;
     private int age; //czy bawimy się w zmianę z czasem? w sensie że wpisuje datę i potem program liczy?
     private Region homeRegion;
     private Photo photo; // czy robimy więcej zdjęć? czy robimy ekran do zmiany zdjęcia?
-    String bio; // W zwierzaku można jego te info szczególne, u ludzi wiadomo
+    private String bio; // W zwierzaku można jego te info szczególne, u ludzi wiadomo
 
     public Description(String name, int age, Region homeRegion, Photo photo, String bio) {
         this.name = name;

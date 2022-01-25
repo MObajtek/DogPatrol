@@ -23,5 +23,6 @@ public class WalkerGUI extends JFrame{
         setContentPane(mainPanel);
     }
 
+    private JButton seeProfileButton;
 
 }
