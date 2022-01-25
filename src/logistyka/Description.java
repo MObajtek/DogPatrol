@@ -7,18 +7,23 @@ public class Description {
     private Photo photo; // czy robimy więcej zdjęć? czy robimy ekran do zmiany zdjęcia?
     String bio; // W zwierzaku można jego te info szczególne, u ludzi wiadomo
 
+    public Description(String name, int age, Region homeRegion, Photo photo, String bio) {
+        this.name = name;
+        this.age = age;
+        this.homeRegion = homeRegion;
+        this.photo = photo;
+        this.bio = bio;
+    }
+
     public Photo getPhoto() {
         return photo;
     }
-
     public String getName() {
         return name;
     }
-
     public int getAge() {
         return age;
     }
-
     public Region getHomeRegion() {
         return homeRegion;
     }
