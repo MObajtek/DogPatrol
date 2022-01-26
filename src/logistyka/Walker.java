@@ -11,13 +11,15 @@ public class Walker {
     private ArrayList<Errand> listOfActiveErrands;
     private ArrayList<Errand> listOfArchivalErrands;
     private Photo photo;
+    private int walletSatus;
     //private Schedule schedule;
 
-    public Walker(Description walkerDescription_) {
+    public Walker(Description walkerDescription_, int walletStatus_) {
         this.walkerDescription = walkerDescription_;
         this.reviews = new ArrayList<>();
         this.listOfActiveErrands = new ArrayList<Errand>();
         this.listOfArchivalErrands = new ArrayList<Errand>();
+        this.walletSatus = walletStatus_;
     }
 
     public ArrayList<Review> getReviews() {

@@ -31,7 +31,7 @@ public class ProfileGUI extends JFrame {
         ageField.setText(String.valueOf(w.getWalkerDescription().getAge()));
         addressTextField.setText(w.getWalkerDescription().getHomeRegion().getCurrentAddress().toString());
         bioTextArea.setText(w.getWalkerDescription().getBio());
-        startup(w.getReviewsOfWalker(),reviewsComboBox);
+        startup(w.getReviews(),reviewsComboBox);
 
         reviewsComboBox.addActionListener(new ActionListener() {
             @Override
@@ -45,11 +45,11 @@ public class ProfileGUI extends JFrame {
         public ProfileGUI(Owner o)  {
              owner = o;
             setContentPane(panelMain);
-            nameField.setText(owner.getOwnerDescription().getName());
-            ageField.setText(String.valueOf(o.getOwnerDescription().getAge()));
-            addressTextField.setText(o.getOwnerDescription().getHomeRegion().getCurrentAddress().toString());
-            bioTextArea.setText(o.getOwnerDescription().getBio());
-            startup(o.getReviewsOfOwner(),reviewsComboBox);
+            nameField.setText(owner.getDescription().getName());
+            ageField.setText(String.valueOf(o.getDescription().getAge()));
+            addressTextField.setText(o.getDescription().getHomeRegion().getCurrentAddress().toString());
+            bioTextArea.setText(o.getDescription().getBio());
+            startup(o.getReviews(),reviewsComboBox);
 
             reviewsComboBox.addActionListener(new ActionListener() {
                 @Override
