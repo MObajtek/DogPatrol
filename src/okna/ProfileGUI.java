@@ -1,7 +1,8 @@
 package okna;
 
-import logistyka.Walker;
 import logistyka.Owner;
+import logistyka.Pet;
+import logistyka.Walker;
 import logistyka.review.Review;
 
 import javax.swing.*;
@@ -60,6 +61,24 @@ public class ProfileGUI extends JFrame {
                     frame.setVisible(true);
                 }
             });
+    }
+    public ProfileGUI(Pet p)  {
+        setContentPane(panelMain);
+        nameField.setText(p.getDescription().getName());
+        ageField.setText(String.valueOf(p.getDescription().getAge()));
+        addressTextField.setText(p.getDescription().getHomeRegion().getCurrentAddress().toString());
+        bioTextArea.setText(p.getDescription().getBio());
+        //startup(p.getReviews(),reviewsComboBox); //TRZEBA DODAC REVIEWS DO ZWIERZA, albo zbudowac nowy profilGUI
+
+        reviewsComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Review r = (Review) reviewsComboBox.getSelectedItem();
+                JFrame frame = new ReviewGUI(r);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
     }
 
 }

@@ -63,5 +63,15 @@ public class ErrandGUI extends JFrame{
         }
         });
 
-}
+        petSeeProfileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pet p = (Pet)(petComboBox.getSelectedItem());
+                JFrame frame = new ProfileGUI(p);
+                frame.pack();
+                frame.setVisible(true);
+
+            }
+        });
+    }
     }
