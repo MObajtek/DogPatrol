@@ -1,8 +1,13 @@
 package okna;
+
 import logistyka.Owner;
+import logistyka.region_address.Address;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class OwnerGUI extends JFrame {
     private JPanel mainPanel;
@@ -10,7 +15,6 @@ public class OwnerGUI extends JFrame {
     private JTextField ownerNameField;
     private JLabel ownerName;
     private JLabel ownerAddress;
-    private JButton placeErrandButton;
     private JComboBox currentErrandsComboBox;
     private JLabel errandsList;
     private JLabel Wallet;
@@ -22,11 +26,10 @@ public class OwnerGUI extends JFrame {
     private JRadioButton currentErrandsRadioButton;
     private JButton seeProfileButton;
     private JComboBox comboBox1;
-
     public OwnerGUI(Owner o){
         setContentPane(mainPanel);
-        ownerNameField.setText(o.getOwnerDescription().getName());
-        ownerAddressField.setText(o.getOwnerDescription().getHomeRegion().getCurrentAddress().toString());
+        refresh(o);
+
         seeProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -35,6 +38,39 @@ public class OwnerGUI extends JFrame {
                 frame.setVisible(true);
             }
         });
+
+
+        mapa.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                Address a = new Address(e.getX(),e.getY());
+                mapa.setLayout(null);
+                JLabel newErrand = new JLabel("x"); //nie wiadomo czemu się nie pojawia
+                newErrand.setLocation(e.getX(), e.getY());
+                mapa.add(newErrand);
+                JFrame frame = new ErrandGUI(a,o);
+                frame.pack();
+                frame.setVisible(true);
+                refresh(o);
+            }
+
+        });
+
+
+        transferMoneyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                o.setWalletStatus(o.getWalletStatus()+10);
+                refresh(o);
+            }
+        });
+
     }
+    public void refresh(Owner o){
+        ownerNameField.setText(o.getDescription().getName());
+        ownerAddressField.setText(o.getDescription().getHomeRegion().getCurrentAddress().toString());
+        walletValue.setText(String.valueOf(o.getWalletStatus()));
+    };
 
 }

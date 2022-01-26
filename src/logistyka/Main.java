@@ -1,6 +1,13 @@
 package logistyka;
+
+import logistyka.errand.Errand;
 import logistyka.region_address.Address;
 import logistyka.region_address.Region;
+import logistyka.review.Review;
+import logistyka.save_load.Load;
+import logistyka.save_load.Save;
+
+import java.io.IOException;
 
 public class Main {
 
@@ -11,7 +18,7 @@ public class Main {
         Pet pet1 = new Pet(new Description("Buba", 4, ownerRegion,"Dobry dinozałr"),"Heterodontozaur",3);
         Pet pet2 = new Pet(new Description("Dziuba", 2, ownerRegion,"Żółty ptaszek"),"Kanarek",5);
         Owner owner = new Owner(new Description("Małgośka mówią mi",20,ownerRegion,"Warta jednej łzy"),100);
-//        Walker walker = new Walker(new Description("Chciałem mieć tatuaże", 21,walkerRegion,photo,"Chciałem mieć pełne sale"),0);
+        Walker walker = new Walker(new Description("Chciałem mieć tatuaże", 21,walkerRegion,"Chciałem mieć pełne sale"),0);
         owner.getListOfPets().add(pet1);
         owner.getListOfPets().add(pet2);
 

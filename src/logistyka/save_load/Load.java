@@ -136,7 +136,7 @@ public class Load {
         return new Owner(Load.loadOwnerDescription(userName),
                 Load.loadReviews(userName),
                 Load.loadErrands(userName),
-                Load.loadPets(userName));
+                Load.loadPets(userName), 6);
     }
 
 

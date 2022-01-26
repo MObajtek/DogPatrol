@@ -11,6 +11,15 @@ public class Owner {
     private ArrayList<Errand> listOfErrands = new ArrayList<>();
     private ArrayList<Pet> listOfPets = new ArrayList<>();
     private Photo photo;
+
+    public int getWalletStatus() {
+        return walletStatus;
+    }
+
+    public void setWalletStatus(int walletStatus) {
+        this.walletStatus = walletStatus;
+    }
+
     private int walletStatus;
 
     public Owner(Description description, ArrayList<Review> reviews, ArrayList<Errand> listOfErrands, ArrayList<Pet> listOfPets, int walletStatus_) {
