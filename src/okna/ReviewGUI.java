@@ -1,5 +1,7 @@
 package okna;
 
+import logistyka.review.Review;
+
 import javax.swing.*;
 
 public class ReviewGUI extends JFrame{
@@ -7,7 +9,7 @@ public class ReviewGUI extends JFrame{
     private JTextField textField1;
     private JPanel panelMain;
 
-    public ReviewGUI()  {
+    public ReviewGUI(Review review)  {
         setContentPane(panelMain);
 
     }

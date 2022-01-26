@@ -3,7 +3,8 @@ package okna;
 import logistyka.*;
 import logistyka.region_address.Address;
 import logistyka.region_address.Region;
-
+import logistyka.Walker;
+import logistyka.Owner;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +24,7 @@ public class MainScreen extends Thread {
         walkerList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new WalkerGUI();
+                JFrame frame = new WalkerGUI((Walker)walkerList.getSelectedItem());
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -31,7 +32,7 @@ public class MainScreen extends Thread {
         addWalkerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new AddWalker();
+                JFrame frame = new AddUser();
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -39,7 +40,7 @@ public class MainScreen extends Thread {
         addOwnerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new OwnerGUI();
+                JFrame frame = new AddUser();
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -47,7 +48,7 @@ public class MainScreen extends Thread {
         ownerList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new OwnerGUI();
+                JFrame frame = new OwnerGUI((Owner)ownerList.getSelectedItem());
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -87,8 +88,8 @@ public class MainScreen extends Thread {
         Region ownerRegion = new Region(new Address(0,0),60);
         Region walkerRegion = new Region(new Address(10,0),40);
         Pet pet = new Pet("Buba",1,ownerRegion,photo,"Super zwierz 10/10","heterodontozaur",4);
-        Owner owner = new Owner(new Description("Małgośka mówią mi",20,ownerRegion,photo,"Warta jednej łzy"));
-        Walker walker = new Walker(new Description("Chciałem mieć tatuaże", 21,walkerRegion,photo,"Chciałem mieć pełne sale"));
+        Owner owner = new Owner(new Description("Małgośka mówią mi",20,ownerRegion,photo,"Warta jednej łzy"),100);
+        Walker walker = new Walker(new Description("Chciałem mieć tatuaże", 21,walkerRegion,photo,"Chciałem mieć pełne sale"),0);
         ArrayList<Owner> owners = new ArrayList<>();
         owners.add(owner);
         ArrayList<Walker> walkers = new ArrayList<>();

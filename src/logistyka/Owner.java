@@ -12,15 +12,48 @@ public class Owner {
     private ErrandList listOfActiveErrands;
     private ErrandList listOfArchivalErrands;
     private PetList listOfPets;
+    private int walletStatus;
+
+    public void setWalletStatus(int walletStatus) {
+        this.walletStatus = walletStatus;
+    }
+
+    public int getWalletStatus() {
+        return walletStatus;
+    }
 
 
-    public Owner(Description ownerDescription_) {
+
+    public Description getOwnerDescription() {
+        return ownerDescription;
+    }
+
+    public ArrayList<Review> getReviewsOfOwner() {
+        return reviewsOfOwner;
+    }
+
+    public ErrandList getListOfActiveErrands() {
+        return listOfActiveErrands;
+    }
+
+    public ErrandList getListOfArchivalErrands() {
+        return listOfArchivalErrands;
+    }
+
+    public PetList getListOfPets() {
+        return listOfPets;
+    }
+
+
+
+
+    public Owner(Description ownerDescription_, int walletStatus_) {
         this.ownerDescription = ownerDescription_;
         this.reviewsOfOwner = new ArrayList<>();
         this.listOfActiveErrands = new ErrandList();
         this.listOfArchivalErrands = new ErrandList();
         this.listOfPets = new PetList();
-
+        this.walletStatus = walletStatus_;
     }
 
     public HashMap<String, Object> toHashmap(){

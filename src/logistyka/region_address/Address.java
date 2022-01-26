@@ -24,4 +24,8 @@ public class Address {
     public void setY(double y) {
         this.y = y;
     }
+
+    public String toString(){
+        return (String.valueOf(this.getX())+" "+String.valueOf(this.getY()));
+    }
 }

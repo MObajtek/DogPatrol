@@ -1,4 +1,7 @@
 package okna;
+
+import logistyka.Walker;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,12 +24,14 @@ public class WalkerGUI extends JFrame{
     private JButton payOutButton;
     private JButton seeProfileButton;
 
-    public WalkerGUI()  {
+    public WalkerGUI(Walker w)  {
         setContentPane(mainPanel);
+        walkerNameField.setText(w.getWalkerDescription().getName());
+        walkerAddressField.setText(w.getWalkerDescription().getHomeRegion().getCurrentAddress().toString());
         seeProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new ProfileGUI();
+                JFrame frame = new ProfileGUI(w);
                 frame.pack();
                 frame.setVisible(true);
             }
