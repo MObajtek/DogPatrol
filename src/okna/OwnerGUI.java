@@ -45,8 +45,9 @@ public class OwnerGUI extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 Address a = new Address(e.getX(),e.getY());
+                mapa = new JPanel(); //na internetach tak mieli, nie pomogło
                 mapa.setLayout(null);
-                JLabel newErrand = new JLabel("x"); //nie wiadomo czemu się nie pojawia
+                JLabel newErrand = new JLabel("XXXXXXXXXX"); //nie wiadomo czemu się nie pojawia
                 newErrand.setLocation(e.getX(), e.getY());
                 mapa.add(newErrand);
                 JFrame frame = new ErrandGUI(a,o);
