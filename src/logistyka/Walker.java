@@ -1,22 +1,27 @@
 package logistyka;
 
-import logistyka.errand.ErrandList;
+import logistyka.errand.Errand;
 import logistyka.review.Review;
 
 import java.util.ArrayList;
 
 public class Walker {
     private Description walkerDescription;
-    private ArrayList<Review> reviewsOfWalker;
-    private ErrandList listOfActiveErrands;
-    private ErrandList listOfArchivalErrands;
+    private ArrayList<Review> reviews;
+    private ArrayList<Errand> listOfActiveErrands;
+    private ArrayList<Errand> listOfArchivalErrands;
+    private Photo photo;
     //private Schedule schedule;
 
     public Walker(Description walkerDescription_) {
         this.walkerDescription = walkerDescription_;
-        this.reviewsOfWalker = new ArrayList<>();
-        this.listOfActiveErrands = new ErrandList();
-        this.listOfArchivalErrands = new ErrandList();
+        this.reviews = new ArrayList<>();
+        this.listOfActiveErrands = new ArrayList<Errand>();
+        this.listOfArchivalErrands = new ArrayList<Errand>();
+    }
+
+    public ArrayList<Review> getReviews() {
+        return reviews;
     }
 
     public Description getWalkerDescription() {

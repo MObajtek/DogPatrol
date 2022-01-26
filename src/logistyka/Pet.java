@@ -2,14 +2,31 @@ package logistyka;
 
 import logistyka.region_address.Region;
 
-public class Pet extends Description {
-    //age - zwierzaki mogą mieć wiek w miesiącach, trzeba to uwzględnić
+public class Pet  {
+    private Description description;
+    private Photo photo;
     String breed;
     int activityScale; // out of 5
 
-    public Pet(String name, int age, Region homeRegion, Photo photo, String bio, String breed, int activityScale) {
-        super(name, age, homeRegion, photo, bio);
+    public Pet(Description description, String breed, int activityScale) {
+        this.description = description;
         this.breed = breed;
         this.activityScale = activityScale;
+    }
+
+    public Description getDescription() {
+        return description;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public int getActivityScale() {
+        return activityScale;
     }
 }
