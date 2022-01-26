@@ -1,13 +1,15 @@
 package logistyka.region_address;
 
 public class Address {
-    private double x;
-    private double y;
+    private double x = -1;
+    private double y = -1;
 
     public Address(double x, double y) {
         this.x = x;
         this.y = y;
     }
+
+
 
     public double getX() {
 
@@ -27,6 +29,6 @@ public class Address {
 
     @Override
     public String toString() {
-        return "(" + x + "," + y + ")";
+        return x + "," + y;
     }
 }

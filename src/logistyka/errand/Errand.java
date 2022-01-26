@@ -8,18 +8,22 @@ public class Errand {
     int payment;
     int time;
     boolean active;  // 0(false) - archiwalne, 1(true) - aktywne
-    Pet pet;
+    String petName;
 
-    public Errand(Address address, int payment, int time, boolean active, Pet pet) {
+    public Errand(Address address, int payment, int time, boolean active, String petName) {
         this.address = address;
         this.payment = payment;
         this.time = time;
         this.active = active;
-        this.pet = pet;
+        this.petName = petName;
     }
 
     @Override
     public String toString() {
-        return  active + "," + address + "," + payment + "," + time;
+        return address.toString() + ":" +
+                payment + ":" +
+                time + ":" +
+                active + ":" +
+                petName;
     }
 }

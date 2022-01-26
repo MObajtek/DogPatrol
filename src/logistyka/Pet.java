@@ -29,4 +29,13 @@ public class Pet  {
     public int getActivityScale() {
         return activityScale;
     }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "description=" + description +
+                ", breed='" + breed + '\'' +
+                ", activityScale=" + activityScale +
+                '}';
+    }
 }

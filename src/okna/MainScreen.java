@@ -86,19 +86,19 @@ public class MainScreen extends Thread {
         Photo photo = new Photo();
         Region ownerRegion = new Region(new Address(0,0),60);
         Region walkerRegion = new Region(new Address(10,0),40);
-        Pet pet = new Pet(new Description("Buba",1,ownerRegion,photo,"Super zwierz 10/10"),"heterodontozaur",4);
-        Owner owner = new Owner(new Description("Małgośka mówią mi",20,ownerRegion,photo,"Warta jednej łzy"));
-        Walker walker = new Walker(new Description("Chciałem mieć tatuaże", 21,walkerRegion,photo,"Chciałem mieć pełne sale"));
-        ArrayList<Owner> owners = new ArrayList<>();
-        owners.add(owner);
-        ArrayList<Walker> walkers = new ArrayList<>();
-        walkers.add(walker);
-
-
-        JFrame frame = new JFrame("MainScreen");
-        frame.setContentPane(new MainScreen(owners,walkers).mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+//        Pet pet = new Pet(new Description("Buba",1,ownerRegion,photo,"Super zwierz 10/10"),"heterodontozaur",4);
+//        Owner owner = new Owner(new Description("Małgośka mówią mi",20,ownerRegion,photo,"Warta jednej łzy"));
+//        Walker walker = new Walker(new Description("Chciałem mieć tatuaże", 21,walkerRegion,photo,"Chciałem mieć pełne sale"));
+//        ArrayList<Owner> owners = new ArrayList<>();
+//        owners.add(owner);
+//        ArrayList<Walker> walkers = new ArrayList<>();
+//        walkers.add(walker);
+//
+//
+//        JFrame frame = new JFrame("MainScreen");
+//        frame.setContentPane(new MainScreen(owners,walkers).mainPanel);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.pack();
+//        frame.setVisible(true);
     }
 }

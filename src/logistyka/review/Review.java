@@ -16,4 +16,12 @@ public class Review {
     public String getComment() {
         return comment;
     }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "stars=" + stars +
+                ", comment='" + comment + '\'' +
+                '}';
+    }
 }
