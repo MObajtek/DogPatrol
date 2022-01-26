@@ -11,16 +11,19 @@ public class Owner {
     private ArrayList<Errand> listOfErrands = new ArrayList<>();
     private ArrayList<Pet> listOfPets = new ArrayList<>();
     private Photo photo;
+    private int walletStatus;
 
-    public Owner(Description description, ArrayList<Review> reviews, ArrayList<Errand> listOfErrands, ArrayList<Pet> listOfPets) {
+    public Owner(Description description, ArrayList<Review> reviews, ArrayList<Errand> listOfErrands, ArrayList<Pet> listOfPets, int walletStatus_) {
         this.description = description;
         this.reviews = reviews;
         this.listOfErrands = listOfErrands;
         this.listOfPets = listOfPets;
+        this.walletStatus = walletStatus_;
     }
 
-    public Owner(Description ownerDescription_) {
+    public Owner(Description ownerDescription_, int walletStatus_) {
         this.description = ownerDescription_;
+        this.walletStatus = walletStatus_;
 
     }
 
