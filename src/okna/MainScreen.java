@@ -94,7 +94,6 @@ public class MainScreen extends Thread {
         owners.add(owner);
         ArrayList<Walker> walkers = new ArrayList<>();
         walkers.add(walker);
-        System.out.println(owner.toHashmap());
 
 
         JFrame frame = new JFrame("MainScreen");

@@ -3,22 +3,21 @@ package logistyka;
 import logistyka.region_address.Region;
 
 public class Description {
-    private String name;
-    private int age; //czy bawimy się w zmianę z czasem? w sensie że wpisuje datę i potem program liczy?
-    private Region homeRegion;
-    private Photo photo; // czy robimy więcej zdjęć? czy robimy ekran do zmiany zdjęcia?
-    private String bio; // W zwierzaku można jego te info szczególne, u ludzi wiadomo
+    private String name = "";
+    private Integer age = -1; //czy bawimy się w zmianę z czasem? w sensie że wpisuje datę i potem program liczy?
+    private Region homeRegion = new Region();
+    private String bio = ""; // W zwierzaku można jego te info szczególne, u ludzi wiadomo
 
-    public Description(String name, int age, Region homeRegion, Photo photo, String bio) {
+    public Description(String name, int age, Region homeRegion, String bio) {
         this.name = name;
         this.age = age;
         this.homeRegion = homeRegion;
-        this.photo = photo;
         this.bio = bio;
     }
 
-    public Photo getPhoto() {
-        return photo;
+
+
+    public Description() {
     }
 
     public String getName() {
@@ -37,4 +36,25 @@ public class Description {
         this.homeRegion = homeRegion;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    @Override
+    public String toString() {
+        return "Description{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", homeRegion=" + homeRegion +
+                ", bio='" + bio + '\'' +
+                '}';
+    }
 }
