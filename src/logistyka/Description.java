@@ -5,7 +5,7 @@ import logistyka.region_address.Region;
 public class Description {
     private String name = "";
     private Integer age = -1; //czy bawimy się w zmianę z czasem? w sensie że wpisuje datę i potem program liczy?
-    private Region homeRegion = new Region();
+    private Region homeRegion;
     private String bio = ""; // W zwierzaku można jego te info szczególne, u ludzi wiadomo
 
     public Description(String name, int age, Region homeRegion, String bio) {

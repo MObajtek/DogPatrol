@@ -31,8 +31,8 @@ public class Save {
         }
         return map;
     }
-    public static void saveReviews(HashMap<Integer,ArrayList<String>> map, String reviewHolder){
-        File clientDir = new File ("src\\res\\" + reviewHolder);
+    public static void saveOwnerReviews(HashMap<Integer,ArrayList<String>> map, String reviewHolder){
+        File clientDir = new File ("src\\res\\owners\\" + reviewHolder);
         try{
             if(clientDir.mkdirs()) {
                 System.out.println("Directory Created");
@@ -42,7 +42,7 @@ public class Save {
         } catch(Exception e){
             e.printStackTrace();
         }
-        File file = new File("src\\res\\" + reviewHolder + "\\reviews.txt");
+        File file = new File("src\\res\\owners\\" + reviewHolder + "\\reviews.txt");
         BufferedWriter bf = null;
         try {
             bf = new BufferedWriter(new FileWriter(file));
@@ -67,7 +67,7 @@ public class Save {
         }
     }
     public static void saveOwnerInfo(Owner owner) throws IOException {
-        File clientDir = new File ("src\\res\\" + owner.getDescription().getName());
+        File clientDir = new File ("src\\res\\owners\\" + owner.getDescription().getName());
         try{
             if(clientDir.mkdirs()) {
                 System.out.println("Directory Created");
@@ -77,7 +77,7 @@ public class Save {
         } catch(Exception e){
             e.printStackTrace();
         }
-        File file = new File("src\\res\\" + owner.getDescription().getName() + "\\info.txt");
+        File file = new File("src\\res\\owners\\" + owner.getDescription().getName() + "\\info.txt");
         BufferedWriter bf = null;
         try {
             bf = new BufferedWriter(new FileWriter(file));
@@ -100,8 +100,8 @@ public class Save {
             }
         }
     }
-    public static void saveOwnerErrands(Owner owner){
-        File clientDir = new File ("src\\res\\" + owner.getDescription().getName());
+    public static void saveOwnerInfo(Description description) throws IOException {
+        File clientDir = new File ("src\\res\\owners\\" + description.getName());
         try{
             if(clientDir.mkdirs()) {
                 System.out.println("Directory Created");
@@ -111,7 +111,40 @@ public class Save {
         } catch(Exception e){
             e.printStackTrace();
         }
-        File file = new File("src\\res\\" +owner.getDescription().getName() + "\\errands.txt");
+        File file = new File("src\\res\\owners\\" + description.getName() + "\\info.txt");
+        BufferedWriter bf = null;
+        try {
+            bf = new BufferedWriter(new FileWriter(file));
+            bf.write(description.getName() + ";" +
+                    description.getAge() + ";" +
+                    description.getHomeRegion() + ";" +
+                    description.getBio());
+            bf.flush();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                // always close the writer
+                bf.close();
+            }
+            catch (Exception ignored) {
+            }
+        }
+    }
+    public static void saveOwnerErrands(Owner owner){
+        File clientDir = new File ("src\\res\\owners\\" + owner.getDescription().getName());
+        try{
+            if(clientDir.mkdirs()) {
+                System.out.println("Directory Created");
+            } else {
+                System.out.println("Directory is not created");
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        File file = new File("src\\res\\owners\\" +owner.getDescription().getName() + "\\errands.txt");
         BufferedWriter bf = null;
         try {
             bf = new BufferedWriter(new FileWriter(file));
@@ -142,7 +175,7 @@ public class Save {
     public static void savePetInfo(Pet pet, String ownerName){
 
 
-        File clientDir = new File ("src\\res\\" + ownerName + "\\pets\\" + pet.getDescription().getName());
+        File clientDir = new File ("src\\res\\owners\\" + ownerName + "\\pets\\" + pet.getDescription().getName());
         try{
             if(clientDir.mkdirs()) {
                 System.out.println("Directory Created");
@@ -152,7 +185,7 @@ public class Save {
         } catch(Exception e){
             e.printStackTrace();
         }
-        File file = new File("src\\res\\" + ownerName + "\\pets\\" + pet.getDescription().getName() + "\\info.txt");
+        File file = new File("src\\res\\owners\\" + ownerName + "\\pets\\" + pet.getDescription().getName() + "\\info.txt");
         BufferedWriter bf = null;
         try {
             bf = new BufferedWriter(new FileWriter(file));
@@ -180,9 +213,168 @@ public class Save {
     }
     public static void saveOwner(Owner owner) throws IOException {
         Save.saveOwnerInfo(owner);
-        Save.saveReviews(Save.reviewsToHashmap(owner),owner.getDescription().getName());
+        Save.saveOwnerReviews(Save.reviewsToHashmap(owner),owner.getDescription().getName());
         Save.saveOwnerErrands(owner);
+        new File ("src\\res\\owners\\" + owner.getDescription().getName() + "\\pets\\").mkdirs();
         Save.saveOwnerPets(owner);
     }
-    
+    public static void saveOwner(Description description) throws IOException {
+        File file;
+        Save.saveOwnerInfo(description);
+        file = new File("src\\res\\owners\\" + description.getName() + "\\reviews.txt");
+        file = new File("src\\res\\owners\\" + description.getName() + "\\errands.txt");
+
+        new File ("src\\res\\owners\\" + description.getName() + "\\pets\\").mkdirs();
+
+    }
+
+    public static void saveWalkerInfo(Walker walker) throws IOException {
+        File clientDir = new File ("src\\res\\walkers\\" + walker.getDescription().getName());
+        try{
+            if(clientDir.mkdirs()) {
+                System.out.println("Directory Created");
+            } else {
+                System.out.println("Directory is not created");
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        File file = new File("src\\res\\walkers\\" + walker.getDescription().getName() + "\\info.txt");
+        BufferedWriter bf = null;
+        try {
+            bf = new BufferedWriter(new FileWriter(file));
+            bf.write(walker.getDescription().getName() + ";" +
+                    walker.getDescription().getAge() + ";" +
+                    walker.getDescription().getHomeRegion() + ";" +
+                    walker.getDescription().getBio());
+
+            bf.flush();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                // always close the writer
+                bf.close();
+            }
+            catch (Exception ignored) {
+            }
+        }
+    }
+    public static void saveWalkerInfo(Description description) throws IOException {
+        File clientDir = new File ("src\\res\\walkers\\" + description.getName());
+        try{
+            if(clientDir.mkdirs()) {
+                System.out.println("Directory Created");
+            } else {
+                System.out.println("Directory is not created");
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        File file = new File("src\\res\\walkers\\" + description.getName() + "\\info.txt");
+        BufferedWriter bf = null;
+        try {
+            bf = new BufferedWriter(new FileWriter(file));
+            bf.write(description.getName() + ";" +
+                    description.getAge() + ";" +
+                    description.getHomeRegion() + ";" +
+                    description.getBio());
+            bf.flush();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                // always close the writer
+                bf.close();
+            }
+            catch (Exception ignored) {
+            }
+        }
+    }
+    public static void saveWalkerErrands(Walker walker){
+        File clientDir = new File ("src\\res\\walkers\\" + walker.getDescription().getName());
+        try{
+            if(clientDir.mkdirs()) {
+                System.out.println("Directory Created");
+            } else {
+                System.out.println("Directory is not created");
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        File file = new File("src\\res\\walkers\\" + walker.getDescription().getName() + "\\errands.txt");
+        BufferedWriter bf = null;
+        try {
+            bf = new BufferedWriter(new FileWriter(file));
+            for (Errand entry :
+                    walker.getListOfErrands()) {
+                bf.write(entry.toString());
+                bf.newLine();
+            }
+            bf.flush();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                // always close the writer
+                bf.close();
+            }
+            catch (Exception ignored) {
+            }
+        }
+    }
+    public static void saveWalkerReviews(HashMap<Integer,ArrayList<String>> map, String reviewHolder){
+        File clientDir = new File ("src\\res\\walkers\\" + reviewHolder);
+        try{
+            if(clientDir.mkdirs()) {
+                System.out.println("Directory Created");
+            } else {
+                System.out.println("Directory is not created");
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        File file = new File("src\\res\\walkers\\" + reviewHolder + "\\reviews.txt");
+        BufferedWriter bf = null;
+        try {
+            bf = new BufferedWriter(new FileWriter(file));
+            for (Map.Entry<Integer, ArrayList<String>> entry :
+                    map.entrySet()) {
+                bf.write(entry.getKey() + ":"
+                        + entry.getValue());
+                bf.newLine();
+            }
+            bf.flush();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                // always close the writer
+                bf.close();
+            }
+            catch (Exception ignored) {
+            }
+        }
+    }
+    public static void saveWalker(Walker walker) throws IOException {
+        Save.saveWalkerInfo(walker);
+        Save.saveWalkerReviews(Save.reviewsToHashmap(walker),walker.getDescription().getName());
+        Save.saveWalkerErrands(walker);
+    }
+    public static void saveWalker(Description description) throws IOException {
+        File file;
+        Save.saveWalkerInfo(description);
+        file = new File("src\\res\\walkers\\" + description.getName() + "\\reviews.txt");
+        file = new File("src\\res\\walkers\\" + description.getName() + "\\errands.txt");
+
+
+    }
 }

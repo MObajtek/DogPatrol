@@ -11,16 +11,8 @@ public class Owner {
     private ArrayList<Errand> listOfErrands = new ArrayList<>();
     private ArrayList<Pet> listOfPets = new ArrayList<>();
     private Photo photo;
+    private int walletStatus = 0;
 
-    public int getWalletStatus() {
-        return walletStatus;
-    }
-
-    public void setWalletStatus(int walletStatus) {
-        this.walletStatus = walletStatus;
-    }
-
-    private int walletStatus;
 
     public Owner(Description description, ArrayList<Review> reviews, ArrayList<Errand> listOfErrands, ArrayList<Pet> listOfPets, int walletStatus_) {
         this.description = description;
@@ -34,6 +26,18 @@ public class Owner {
         this.description = ownerDescription_;
         this.walletStatus = walletStatus_;
 
+    }
+
+    public Owner(Description description){
+        this.description = description;
+    }
+
+    public int getWalletStatus() {
+        return walletStatus;
+    }
+
+    public void setWalletStatus(int walletStatus) {
+        this.walletStatus = walletStatus;
     }
 
     public Description getDescription() {
@@ -54,11 +58,6 @@ public class Owner {
 
     @Override
     public String toString() {
-        return "Owner{" +
-                "description=" + description +
-                ", reviews=" + reviews +
-                ", listOfErrands=" + listOfErrands +
-                ", listOfPets=" + listOfPets +
-                '}';
+        return description.getName();
     }
 }

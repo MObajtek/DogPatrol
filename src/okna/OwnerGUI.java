@@ -20,20 +20,19 @@ public class OwnerGUI extends JFrame {
     private JLabel Wallet;
     private JTextField walletValue;
     private JPanel mapa;
-    private JLabel Map;
     private JButton transferMoneyButton;
     private JRadioButton archivalErrandsRadioButton;
     private JRadioButton currentErrandsRadioButton;
     private JButton seeProfileButton;
     private JComboBox comboBox1;
-    public OwnerGUI(Owner o){
+    public OwnerGUI(Owner owner){
         setContentPane(mainPanel);
-        refresh(o);
+        refresh(owner);
 
         seeProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new ProfileGUI(o);
+                JFrame frame = new ProfileGUI(owner);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -50,10 +49,10 @@ public class OwnerGUI extends JFrame {
                 JLabel newErrand = new JLabel("XXXXXXXXXX"); //nie wiadomo czemu się nie pojawia
                 newErrand.setLocation(e.getX(), e.getY());
                 mapa.add(newErrand);
-                JFrame frame = new ErrandGUI(a,o);
+                JFrame frame = new ErrandGUI(a,owner);
                 frame.pack();
                 frame.setVisible(true);
-                refresh(o);
+                refresh(owner);
             }
 
         });
@@ -62,8 +61,8 @@ public class OwnerGUI extends JFrame {
         transferMoneyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                o.setWalletStatus(o.getWalletStatus()+10);
-                refresh(o);
+                owner.setWalletStatus(owner.getWalletStatus()+10);
+                refresh(owner);
             }
         });
 

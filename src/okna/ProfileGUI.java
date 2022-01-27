@@ -28,10 +28,10 @@ public class ProfileGUI extends JFrame {
     public ProfileGUI(Walker w)  {
         walker = w;
         setContentPane(panelMain);
-        nameField.setText(w.getWalkerDescription().getName());
-        ageField.setText(String.valueOf(w.getWalkerDescription().getAge()));
-        addressTextField.setText(w.getWalkerDescription().getHomeRegion().getCurrentAddress().toString());
-        bioTextArea.setText(w.getWalkerDescription().getBio());
+        nameField.setText(w.getDescription().getName());
+        ageField.setText(String.valueOf(w.getDescription().getAge()));
+        addressTextField.setText(w.getDescription().getHomeRegion().getCurrentAddress().toString());
+        bioTextArea.setText(w.getDescription().getBio());
         startup(w.getReviews(),reviewsComboBox);
 
         reviewsComboBox.addActionListener(new ActionListener() {

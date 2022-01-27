@@ -5,9 +5,12 @@ import logistyka.region_address.Address;
 import logistyka.region_address.Region;
 import logistyka.Walker;
 import logistyka.Owner;
+import logistyka.save_load.Load;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainScreen extends Thread {
@@ -32,7 +35,7 @@ public class MainScreen extends Thread {
         addWalkerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new AddUser();
+                JFrame frame = new AddWalker(walkerList);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -40,7 +43,7 @@ public class MainScreen extends Thread {
         addOwnerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new AddUser();
+                JFrame frame = new AddOwner(ownerList);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -73,13 +76,20 @@ public class MainScreen extends Thread {
         }
     }
     public void startup(ArrayList<Owner> owners, ArrayList<Walker> walkers){
-        for (Owner owner:owners) {
-            ownerList.addItem(owner);
+        File ownerDir = new File ("src\\res\\owners\\");
+        ownerDir.mkdirs();
+        File walkerDir = new File ("src\\res\\walkers\\");
+        walkerDir.mkdirs();
+        if (ownerDir.list().length > 0) {
+            for (final File fileEntry : ownerDir.listFiles()) {
+                ownerList.addItem(Load.loadOwner(fileEntry.getName()));
+            }
         }
-        for (Walker walker:walkers) {
-            walkerList.addItem(walker);
+        if (walkerDir.list().length > 0) {
+            for (final File fileEntry : walkerDir.listFiles()) {
+                walkerList.addItem(Load.loadWalker(fileEntry.getName()));
+            }
         }
-
     }
 
 

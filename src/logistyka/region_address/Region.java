@@ -9,7 +9,9 @@ public class Region {
         this.radius = radius;
     }
 
-    public Region() {
+    public Region(Address currentAddress) {
+        this.currentAddress = currentAddress;
+        this.radius = 0;
     }
 
     public void setCurrentAddress(Address currentAddress) {

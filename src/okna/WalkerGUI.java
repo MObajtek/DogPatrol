@@ -26,8 +26,8 @@ public class WalkerGUI extends JFrame{
 
     public WalkerGUI(Walker w)  {
         setContentPane(mainPanel);
-        walkerNameField.setText(w.getWalkerDescription().getName());
-        walkerAddressField.setText(w.getWalkerDescription().getHomeRegion().getCurrentAddress().toString());
+        walkerNameField.setText(w.getDescription().getName());
+        walkerAddressField.setText(w.getDescription().getHomeRegion().getCurrentAddress().toString());
         seeProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
