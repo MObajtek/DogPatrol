@@ -1,4 +1,4 @@
-package logistyka;
+package future;
 
 public class Photo {
 }

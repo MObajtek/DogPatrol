@@ -1,5 +1,6 @@
 package okna;
 
+import future.Photo;
 import logistyka.*;
 import logistyka.errand.Errand;
 import logistyka.region_address.Address;
@@ -13,7 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class MainScreen extends Thread {
     private JPanel mainPanel;

@@ -25,6 +25,7 @@ public class ErrandGUI extends JFrame{
         setContentPane(panelMain);
         ownerNameField.setText(owner.getDescription().getName());
         addressField.setText(address.toString());
+
         if (owner.getListOfPets().isEmpty()){
             System.out.println("Nie istnieje zwierzę, dla którego można stworzyć zlecenie");
             dispose();
@@ -32,6 +33,7 @@ public class ErrandGUI extends JFrame{
         for (Pet pet: owner.getListOfPets()) {
             petComboBox.addItem(pet);
         }
+
         ownerSeeProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -61,6 +63,7 @@ public class ErrandGUI extends JFrame{
                     owner.getListOfErrands().add(errand);
                     dispose();
                     currentList.addItem(errand);
+                    owner.setWalletStatus(owner.getWalletStatus()-pay);
                     dispose();
                 }catch(Exception e1) {
                     System.out.println("Nie wybrano zwierzaka, hmmm?");}           }

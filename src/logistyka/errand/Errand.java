@@ -1,6 +1,5 @@
 package logistyka.errand;
 
-import logistyka.Pet;
 import logistyka.region_address.Address;
 
 import java.util.Random;
@@ -31,7 +30,7 @@ public class Errand {
         this.petName = petName;
     }
 
-    public String toString2() {
+    public String toStringForSaveLoad() {
         return errandID + ":" +
                 address.toString() + ":" +
                 payment + ":" +

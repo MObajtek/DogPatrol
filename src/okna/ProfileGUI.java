@@ -21,6 +21,7 @@ public class ProfileGUI extends JFrame {
     private JPanel panelMain;
     private JLabel PHOTO;
     private JPanel photoPanel;
+    private JLabel reviewsLabel;
 
     public void startup(ArrayList<Review> reviews_,JComboBox<Review> reviews){
         for (Review r:reviews_) {
@@ -29,18 +30,15 @@ public class ProfileGUI extends JFrame {
 
     }
     public ProfileGUI(Walker w)  {
-        PHOTO = new JLabel("PHOTO", JLabel.CENTER);
         walker = w;
         setContentPane(panelMain);
         nameField.setText(w.getDescription().getName());
         ageField.setText(String.valueOf(w.getDescription().getAge()));
         addressTextField.setText(w.getDescription().getHomeRegion().getCurrentAddress().toString());
         bioTextArea.setText(w.getDescription().getBio());
-
-
-
-
         startup(w.getReviews(),reviewsComboBox);
+
+        //PHOTO.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Krawczyk.png"))));
 
         reviewsComboBox.addActionListener(new ActionListener() {
             @Override
@@ -58,8 +56,9 @@ public class ProfileGUI extends JFrame {
             ageField.setText(String.valueOf(o.getDescription().getAge()));
             addressTextField.setText(o.getDescription().getHomeRegion().getCurrentAddress().toString());
             bioTextArea.setText(o.getDescription().getBio());
-
             startup(o.getReviews(),reviewsComboBox);
+            ImageIcon photo = new ImageIcon(System.getProperty("user.dir")+"\\src\\Marylka.png");
+            PHOTO.setIcon(photo);
 
             reviewsComboBox.addActionListener(new ActionListener() {
                 @Override
@@ -77,8 +76,10 @@ public class ProfileGUI extends JFrame {
         ageField.setText(String.valueOf(p.getDescription().getAge()));
         addressTextField.setText(p.getDescription().getHomeRegion().getCurrentAddress().toString());
         bioTextArea.setText(p.getDescription().getBio());
-        //startup(p.getReviews(),reviewsComboBox); //TRZEBA DODAC REVIEWS DO ZWIERZA, albo zbudowac nowy profilGUI
-
+        reviewsComboBox.setVisible(false);
+        reviewsLabel.setVisible(false);
+        ImageIcon photo = new ImageIcon(System.getProperty("user.dir")+"\\src\\heterodontozaur.png");
+        PHOTO.setIcon(photo);
         reviewsComboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

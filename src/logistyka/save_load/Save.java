@@ -150,7 +150,7 @@ public class Save {
             bf = new BufferedWriter(new FileWriter(file));
             for (Errand entry :
                     owner.getListOfErrands()) {
-                bf.write(entry.toString2());
+                bf.write(entry.toStringForSaveLoad());
                 bf.newLine();
             }
             bf.flush();

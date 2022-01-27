@@ -1,6 +1,6 @@
 package logistyka;
 
-import logistyka.region_address.Region;
+import future.Photo;
 
 public class Pet  {
     private Description description;

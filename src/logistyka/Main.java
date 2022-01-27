@@ -1,5 +1,6 @@
 package logistyka;
 
+import future.Photo;
 import logistyka.errand.Errand;
 import logistyka.region_address.Address;
 import logistyka.region_address.Region;

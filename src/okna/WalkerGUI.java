@@ -28,7 +28,7 @@ public class WalkerGUI extends JFrame{
         setContentPane(mainPanel);
         walkerNameField.setText(w.getDescription().getName());
         walkerAddressField.setText(w.getDescription().getHomeRegion().getCurrentAddress().toString());
-        walletValue.setText(String.valueOf(w.getWalletSatus()));
+        walletValue.setText(String.valueOf(w.getWalletStatus()));
         seeProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -40,8 +40,8 @@ public class WalkerGUI extends JFrame{
         payOutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                w.setWalletSatus(0);
-                walletValue.setText(String.valueOf(w.getWalletSatus()));
+                w.setWalletStatus(0);
+                walletValue.setText(String.valueOf(w.getWalletStatus()));
             }
         });
     }

@@ -5,59 +5,30 @@ import logistyka.review.Review;
 
 import java.util.ArrayList;
 
-public class Owner {
-    private Description description;
-    private ArrayList<Review> reviews = new ArrayList<>();
-    private ArrayList<Errand> listOfErrands = new ArrayList<>();
-    private ArrayList<Pet> listOfPets = new ArrayList<>();
-    private Photo photo;
-    private int walletStatus = 0;
+public class Owner extends User{
 
 
-    public Owner(Description description, ArrayList<Review> reviews, ArrayList<Errand> listOfErrands, ArrayList<Pet> listOfPets, int walletStatus_) {
-        this.description = description;
-        this.reviews = reviews;
-        this.listOfErrands = listOfErrands;
-        this.listOfPets = listOfPets;
-        this.walletStatus = walletStatus_;
-    }
-
-    public Owner(Description ownerDescription_, int walletStatus_) {
-        this.description = ownerDescription_;
-        this.walletStatus = walletStatus_;
-
-    }
-
-    public Owner(Description description){
-        this.description = description;
-    }
-
-    public int getWalletStatus() {
-        return walletStatus;
-    }
-
-    public void setWalletStatus(int walletStatus) {
-        this.walletStatus = walletStatus;
-    }
-
-    public Description getDescription() {
-        return description;
-    }
-
-    public ArrayList<Review> getReviews() {
-        return reviews;
-    }
+    private ArrayList<Pet> listOfPets;
 
     public ArrayList<Pet> getListOfPets() {
         return listOfPets;
     }
 
-    public ArrayList<Errand> getListOfErrands() {
-        return listOfErrands;
+    public Owner(Description description, ArrayList<Review> reviews, ArrayList<Errand> listOfErrands, ArrayList<Pet> listOfPets, int walletStatus_) {
+        super(description,walletStatus_);
+        this.reviews = reviews;
+        this.listOfErrands = listOfErrands;
+        this.listOfPets = listOfPets;
+
     }
 
-    @Override
-    public String toString() {
-        return description.getName();
+    public Owner(Description ownerDescription_, int walletStatus_) {
+        super(ownerDescription_,walletStatus_);
+
     }
+
+    public Owner(Description description){
+        super(description,0);
+    }
+
 }
