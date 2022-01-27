@@ -23,7 +23,7 @@ public class AddPet extends JFrame {
     private JTextField petAge;
     private JTextField petName;
 
-    public AddPet(Owner owner) {
+    public AddPet(Owner owner, JComboBox petList) {
         setContentPane(panelMain);
         addPetButton.addActionListener(new ActionListener() {
             @Override
@@ -36,6 +36,7 @@ public class AddPet extends JFrame {
                         petBreed.getText(),
                         petActivity.getValue());
                 Save.savePetInfo(pet, owner.getDescription().getName());
+                petList.addItem(pet);
                 dispose();
 
             }

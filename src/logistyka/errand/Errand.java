@@ -22,14 +22,27 @@ public class Errand {
         this.petName = petName;
     }
 
-    @Override
-    public String toString() {
+    public Errand(Integer errandID, Address address, int payment, int time, boolean active, String petName) {
+        this.errandID = errandID;
+        this.address = address;
+        this.payment = payment;
+        this.time = time;
+        this.active = active;
+        this.petName = petName;
+    }
+
+    public String toString2() {
         return errandID + ":" +
                 address.toString() + ":" +
                 payment + ":" +
                 time + ":" +
                 active + ":" +
                 petName;
+    }
+
+    @Override
+    public String toString() {
+        return petName + ", " + address;
     }
 
     public boolean isActive() {

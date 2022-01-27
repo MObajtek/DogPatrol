@@ -112,13 +112,13 @@ public class Load {
             String line;
             while ((line = bf.readLine()) != null){
                 String[] parts = line.split(":");
-                String[] address = parts[0].split(",");
-                errands.add(new Errand(
+                String[] address = parts[1].split(",");
+                errands.add(new Errand(Integer.parseInt(parts[0]),
                         new Address(Double.parseDouble(address[0]),Double.parseDouble(address[1])),
-                        Integer.parseInt(parts[1]),
                         Integer.parseInt(parts[2]),
-                        Boolean.parseBoolean(parts[3]),
-                        parts[4]));
+                        Integer.parseInt(parts[3]),
+                        Boolean.parseBoolean(parts[4]),
+                        parts[5]));
             }
         }
         catch (IOException e) {

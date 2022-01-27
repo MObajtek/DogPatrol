@@ -21,12 +21,12 @@ public class ErrandGUI extends JFrame{
     private JTextField addressField;
     private JComboBox petComboBox;
 
-    public ErrandGUI(Address address, Owner owner){
+    public ErrandGUI(Address address, Owner owner, JComboBox currentList){
         setContentPane(panelMain);
         ownerNameField.setText(owner.getDescription().getName());
         addressField.setText(address.toString());
         if (owner.getListOfPets().isEmpty()){
-            System.out.println("Nie istnieje zwierzę, dla którego można stworzyć zlecenie");
+            System.out.println("Nie istnieje zwierzę,    dla którego można stworzyć zlecenie");
             dispose();
         }
         for (Pet pet: owner.getListOfPets()) {
@@ -59,6 +59,7 @@ public class ErrandGUI extends JFrame{
                 //trzeba opakować try catchem jakby ktoś nie wybrał zwierza
                 Errand errand = new Errand(address,pay,time,true,((Pet)petComboBox.getSelectedItem()).getDescription().getName());
                 owner.getListOfErrands().add(errand);
+                currentList.addItem(errand);
                 dispose();
             }
         });

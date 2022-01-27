@@ -7,10 +7,7 @@ import logistyka.region_address.Address;
 import logistyka.save_load.Load;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -20,12 +17,9 @@ public class OwnerGUI extends JFrame {
     private JLabel ownerNameField;
     private JLabel ownerName;
     private JLabel ownerAddress;
-    private JComboBox errandsComboBox;
     private JTextField walletValue;
     private JPanel mapa;
     private JButton transferMoneyButton;
-    private JRadioButton archivalErrandsRadioButton;
-    private JRadioButton currentErrandsRadioButton;
     private JButton seeProfileButton;
     private JComboBox petList;
     private JComboBox currentErrandsComboBox;
@@ -37,14 +31,12 @@ public class OwnerGUI extends JFrame {
     ArrayList<Errand> masterErrandList = new ArrayList<>();
 
     public OwnerGUI(Owner owner, ArrayList<Errand> masterErrandList){
+        errandIcon.setVisible(false);
         this.masterErrandList = masterErrandList;
         sortErrands();
 
         setContentPane(mainPanel);
 
-        ButtonGroup group = new ButtonGroup();
-        group.add(archivalErrandsRadioButton);
-        group.add(currentErrandsRadioButton);
 
         ownerNameField.setText(owner.getDescription().getName());
         ownerAddressField.setText(owner.getDescription().getHomeRegion().getCurrentAddress().toString());
@@ -66,9 +58,10 @@ public class OwnerGUI extends JFrame {
             @Override
             public void mouseClicked(MouseEvent event) {
                 super.mouseClicked(event);
-                Address address = new Address(event.getX(),event.getY());
                 errandIcon.setLocation(event.getX(), event.getY());
-                JFrame frame = new ErrandGUI(address,owner);
+                Address address = new Address(event.getX(),event.getY());
+                JFrame frame = new ErrandGUI(address,owner,currentErrandsComboBox);
+                errandIcon.setVisible(true);
                 frame.pack();
                 frame.setVisible(true);
                 refresh(owner);
@@ -82,29 +75,19 @@ public class OwnerGUI extends JFrame {
                 refresh(owner);
             }
         });
-        errandsComboBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                for (Enumeration<AbstractButton> buttons = group.getElements(); buttons.hasMoreElements();) {
-                    AbstractButton button = buttons.nextElement();
-                    if (button.isSelected() && button.getText().equalsIgnoreCase("Current Errands")) {
-                        errandsComboBox = currentErrandsComboBox;
-                    }
-                    else if (button.isSelected() && button.getText().equalsIgnoreCase("Archival Errands"))
-                        errandsComboBox = archivalErrandsComboBox;
-                }
-            }
+        addPetButton.addActionListener(e -> {
+            JFrame frame = new AddPet(owner, petList);
+            frame.pack();
+            frame.setVisible(true);
+//            frame.addWindowListener(new WindowAdapter() {
+//                @Override
+//                public void windowClosed(WindowEvent e) {
+//                    refresh(owner);
+//                }
+//            });
+
         });
 
-        addPetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame frame = new AddPet(owner);
-                frame.pack();
-                frame.setVisible(true);
-                refresh(owner);
-            }
-        });
     }
     public void refresh(Owner o){
         walletValue.setText(String.valueOf(o.getWalletStatus()));
@@ -112,6 +95,7 @@ public class OwnerGUI extends JFrame {
         for (Pet pet: o.getListOfPets()) {
             if (((DefaultComboBoxModel)petList.getModel()).getIndexOf(pet) == -1)
                 petList.addItem(pet);
+
         }
 
     };
@@ -129,4 +113,7 @@ public class OwnerGUI extends JFrame {
 
     }
 
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+    }
 }
