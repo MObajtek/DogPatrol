@@ -26,7 +26,7 @@ public class ErrandGUI extends JFrame{
         ownerNameField.setText(owner.getDescription().getName());
         addressField.setText(address.toString());
         if (owner.getListOfPets().isEmpty()){
-            System.out.println("Nie istnieje zwierzę,    dla którego można stworzyć zlecenie");
+            System.out.println("Nie istnieje zwierzę, dla którego można stworzyć zlecenie");
             dispose();
         }
         for (Pet pet: owner.getListOfPets()) {
@@ -56,12 +56,16 @@ public class ErrandGUI extends JFrame{
                 catch(Exception e1){
                     System.out.println("Brak wpisanej wartości lub ma zły format, wybrano domyślne 60");
                 }
-                //trzeba opakować try catchem jakby ktoś nie wybrał zwierza
-                Errand errand = new Errand(address,pay,time,true,((Pet)petComboBox.getSelectedItem()).getDescription().getName());
-                owner.getListOfErrands().add(errand);
-                currentList.addItem(errand);
-                dispose();
-            }
+                try{
+                    Errand errand = new Errand(address,pay,time,true,((Pet)petComboBox.getSelectedItem()).getDescription().getName());
+                    owner.getListOfErrands().add(errand);
+                    dispose();
+                    currentList.addItem(errand);
+                    dispose();
+                }catch(Exception e1) {
+                    System.out.println("Nie wybrano zwierzaka, hmmm?");}           }
+
+
         });
         discardErrandButton.addActionListener(new ActionListener() {
             @Override

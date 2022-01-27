@@ -28,12 +28,20 @@ public class WalkerGUI extends JFrame{
         setContentPane(mainPanel);
         walkerNameField.setText(w.getDescription().getName());
         walkerAddressField.setText(w.getDescription().getHomeRegion().getCurrentAddress().toString());
+        walletValue.setText(String.valueOf(w.getWalletSatus()));
         seeProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new ProfileGUI(w);
                 frame.pack();
                 frame.setVisible(true);
+            }
+        });
+        payOutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                w.setWalletSatus(0);
+                walletValue.setText(String.valueOf(w.getWalletSatus()));
             }
         });
     }
