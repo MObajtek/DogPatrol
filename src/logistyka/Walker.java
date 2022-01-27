@@ -10,6 +10,15 @@ public class Walker {
     private ArrayList<Review> reviews = new ArrayList<>();
     private ArrayList<Errand> listOfErrands = new ArrayList<>();
     private Photo photo;
+
+    public int getWalletSatus() {
+        return walletSatus;
+    }
+
+    public void setWalletSatus(int walletSatus) {
+        this.walletSatus = walletSatus;
+    }
+
     private int walletSatus = 0;
     //private Schedule schedule;
 
