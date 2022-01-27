@@ -32,10 +32,6 @@ public class Pet  {
 
     @Override
     public String toString() {
-        return "Pet{" +
-                "description=" + description +
-                ", breed='" + breed + '\'' +
-                ", activityScale=" + activityScale +
-                '}';
+        return description.getName() + ", " + breed;
     }
 }

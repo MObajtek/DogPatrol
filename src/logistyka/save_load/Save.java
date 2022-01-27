@@ -185,6 +185,7 @@ public class Save {
         } catch(Exception e){
             e.printStackTrace();
         }
+
         File file = new File("src\\res\\owners\\" + ownerName + "\\pets\\" + pet.getDescription().getName() + "\\info.txt");
         BufferedWriter bf = null;
         try {
@@ -377,4 +378,8 @@ public class Save {
 
 
     }
+
+    public static void addOwnerErrand(){};
+    public static void addWalkerErrand(){};
+
 }

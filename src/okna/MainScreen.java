@@ -1,6 +1,7 @@
 package okna;
 
 import logistyka.*;
+import logistyka.errand.Errand;
 import logistyka.region_address.Address;
 import logistyka.region_address.Region;
 import logistyka.Walker;
@@ -12,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainScreen extends Thread {
     private JPanel mainPanel;
@@ -21,6 +23,7 @@ public class MainScreen extends Thread {
     private JComboBox ownerList;
     private JPanel walkerPanel;
     private JPanel ownerPanel;
+    private ArrayList<Errand> masterErrandList = new ArrayList<>();
 
     public MainScreen(ArrayList<Owner> owners, ArrayList<Walker> walkers) {
         this.startup(owners,walkers);
@@ -51,7 +54,7 @@ public class MainScreen extends Thread {
         ownerList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new OwnerGUI((Owner)ownerList.getSelectedItem());
+                JFrame frame = new OwnerGUI((Owner)ownerList.getSelectedItem(),masterErrandList);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -80,9 +83,17 @@ public class MainScreen extends Thread {
         ownerDir.mkdirs();
         File walkerDir = new File ("src\\res\\walkers\\");
         walkerDir.mkdirs();
+        Owner owner;
+        Walker walker;
+
+
         if (ownerDir.list().length > 0) {
             for (final File fileEntry : ownerDir.listFiles()) {
-                ownerList.addItem(Load.loadOwner(fileEntry.getName()));
+                owner = Load.loadOwner(fileEntry.getName());
+                for (Errand errand:owner.getListOfErrands()) {
+                    masterErrandList.add(errand);
+                }
+                ownerList.addItem(owner);
             }
         }
         if (walkerDir.list().length > 0) {

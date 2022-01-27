@@ -21,14 +21,21 @@ public class ErrandGUI extends JFrame{
     private JTextField addressField;
     private JComboBox petComboBox;
 
-    public ErrandGUI(Address a, Owner o){
+    public ErrandGUI(Address address, Owner owner){
         setContentPane(panelMain);
-        ownerNameField.setText(o.getDescription().getName());
-        addressField.setText(a.toString());
+        ownerNameField.setText(owner.getDescription().getName());
+        addressField.setText(address.toString());
+        if (owner.getListOfPets().isEmpty()){
+            System.out.println("Nie istnieje zwierzę, dla którego można stworzyć zlecenie");
+            dispose();
+        }
+        for (Pet pet: owner.getListOfPets()) {
+            petComboBox.addItem(pet);
+        }
         ownerSeeProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new ProfileGUI(o);
+                JFrame frame = new ProfileGUI(owner);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -50,8 +57,8 @@ public class ErrandGUI extends JFrame{
                     System.out.println("Brak wpisanej wartości lub ma zły format, wybrano domyślne 60");
                 }
                 //trzeba opakować try catchem jakby ktoś nie wybrał zwierza
-                Errand errand = new Errand(a,pay,time,true,((Pet)petComboBox.getSelectedItem()).getDescription().getName());
-                o.getListOfErrands().add(errand);
+                Errand errand = new Errand(address,pay,time,true,((Pet)petComboBox.getSelectedItem()).getDescription().getName());
+                owner.getListOfErrands().add(errand);
                 dispose();
             }
         });
@@ -66,8 +73,8 @@ public class ErrandGUI extends JFrame{
         petSeeProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Pet p = (Pet)(petComboBox.getSelectedItem());
-                JFrame frame = new ProfileGUI(p);
+                Pet pet = (Pet)(petComboBox.getSelectedItem());
+                JFrame frame = new ProfileGUI(pet);
                 frame.pack();
                 frame.setVisible(true);
 
