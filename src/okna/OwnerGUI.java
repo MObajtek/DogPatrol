@@ -5,6 +5,7 @@ import logistyka.Pet;
 import logistyka.errand.Errand;
 import logistyka.region_address.Address;
 import logistyka.save_load.Load;
+import logistyka.save_load.Save;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -30,6 +31,7 @@ public class OwnerGUI extends JFrame{
     private JButton addPetButton;
     private JLabel Wallet;
     private JLabel errandsList;
+    private JButton refreshButton;
     ArrayList<Errand> masterErrandList = new ArrayList<>();
 
     public OwnerGUI(Owner owner, ArrayList<Errand> masterErrandList){
@@ -56,7 +58,7 @@ public class OwnerGUI extends JFrame{
                 super.mouseClicked(event);
                 errandIcon.setLocation(event.getX(), event.getY());
                 Address address = new Address(event.getX(),event.getY());
-                JFrame frame = new ErrandGUI(address,owner,currentErrandsComboBox);
+                JFrame frame = new OwnerErrandGUI(address,owner,currentErrandsComboBox, masterErrandList);
                 errandIcon.setLocation(event.getX(), event.getY());
                 errandIcon.setVisible(true);
                 refresh(owner);
@@ -87,25 +89,45 @@ public class OwnerGUI extends JFrame{
 //            });
 
         });
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                Save.saveOwnerErrands(owner);
+                Save.saveOwnerPets(owner);
+            }
+        });
 
+        refreshButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                refresh(owner);
+            }
+        });
     }
     public void refresh(Owner o){
         walletValue.setText(String.valueOf(o.getWalletStatus()));
         Load.loadOwner(o.getDescription().getName());
-        currentErrandsComboBox = new JComboBox();
-        archivalErrandsComboBox = new JComboBox();
+
         for (Pet pet: o.getListOfPets()) {
             if (((DefaultComboBoxModel)petList.getModel()).getIndexOf(pet) == -1)
                 petList.addItem(pet);
 
         }
-        for (Errand e: o.getListOfErrands()) {
-            if (((DefaultComboBoxModel)currentErrandsComboBox.getModel()).getIndexOf(e) == -1)
-                petList.addItem(e);
-            else if(e.isActive()){ currentErrandsComboBox.addItem(e);
+        for (Errand ownerErrand: o.getListOfErrands()) {
+            if (((DefaultComboBoxModel)currentErrandsComboBox.getModel()).getIndexOf(ownerErrand) != -1 ||
+                    ((DefaultComboBoxModel)archivalErrandsComboBox.getModel()).getIndexOf(ownerErrand) != -1){
+                ;
+            }
+            else if(ownerErrand.isActive()){
+                currentErrandsComboBox.addItem(ownerErrand);
             }
             else {
-                archivalErrandsComboBox.addItem(e);
+                archivalErrandsComboBox.addItem(ownerErrand);
+            }
+
+            if (!ownerErrand.isActive() && masterErrandList.contains(ownerErrand)){
+                archivalErrandsComboBox.addItem(ownerErrand);
+                currentErrandsComboBox.removeItem(ownerErrand);
             }
 
         }

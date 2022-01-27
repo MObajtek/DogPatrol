@@ -8,8 +8,9 @@ import logistyka.region_address.Address;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class ErrandGUI extends JFrame{
+public class OwnerErrandGUI extends JFrame{
     private JTextField ownerNameField;
     private JButton ownerSeeProfileButton;
     private JButton petSeeProfileButton;
@@ -21,7 +22,7 @@ public class ErrandGUI extends JFrame{
     private JTextField addressField;
     private JComboBox petComboBox;
 
-    public ErrandGUI(Address address, Owner owner, JComboBox currentList){
+    public OwnerErrandGUI(Address address, Owner owner, JComboBox currentList, ArrayList<Errand> masterErrandList){
         setContentPane(panelMain);
         ownerNameField.setText(owner.getDescription().getName());
         addressField.setText(address.toString());
@@ -61,12 +62,16 @@ public class ErrandGUI extends JFrame{
                 try{
                     Errand errand = new Errand(address,pay,time,true,((Pet)petComboBox.getSelectedItem()).getDescription().getName());
                     owner.getListOfErrands().add(errand);
+                    masterErrandList.add(errand);
                     dispose();
                     currentList.addItem(errand);
                     owner.setWalletStatus(owner.getWalletStatus()-pay);
                     dispose();
                 }catch(Exception e1) {
-                    System.out.println("Nie wybrano zwierzaka, hmmm?");}           }
+                    System.out.println("Nie wybrano zwierzaka, hmmm?");}
+
+
+            }
 
 
         });

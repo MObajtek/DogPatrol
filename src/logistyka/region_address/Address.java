@@ -9,7 +9,9 @@ public class Address {
         this.y = y;
     }
 
-
+    public double distance(Address address){
+        return (Math.sqrt(Math.pow(address.getX() - this.x, 2) + Math.pow(address.getY() - this.y, 2)));
+    }
 
     public double getX() {
 

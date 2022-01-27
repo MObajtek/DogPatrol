@@ -38,7 +38,8 @@ public class ProfileGUI extends JFrame {
         bioTextArea.setText(w.getDescription().getBio());
         startup(w.getReviews(),reviewsComboBox);
 
-        //PHOTO.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("Krawczyk.png"))));
+        ImageIcon photo = new ImageIcon(System.getProperty("user.dir")+"\\src\\Krawczyk.png");
+        PHOTO.setIcon(photo);
 
         reviewsComboBox.addActionListener(new ActionListener() {
             @Override

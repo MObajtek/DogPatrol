@@ -30,7 +30,7 @@ public class MainScreen extends Thread {
         walkerList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JFrame frame = new WalkerGUI((Walker)walkerList.getSelectedItem());
+                JFrame frame = new WalkerGUI((Walker)walkerList.getSelectedItem(), masterErrandList);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -91,7 +91,8 @@ public class MainScreen extends Thread {
             for (final File fileEntry : ownerDir.listFiles()) {
                 owner = Load.loadOwner(fileEntry.getName());
                 for (Errand errand:owner.getListOfErrands()) {
-                    masterErrandList.add(errand);
+                    if (errand.isActive())
+                        masterErrandList.add(errand);
                 }
                 ownerList.addItem(owner);
             }
@@ -102,6 +103,8 @@ public class MainScreen extends Thread {
             }
         }
     }
+
+
 
 
     public static void main(String[] args){
