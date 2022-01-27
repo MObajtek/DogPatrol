@@ -56,11 +56,10 @@ public class ErrandGUI extends JFrame{
                 catch(Exception e1){
                     System.out.println("Brak wpisanej wartości lub ma zły format, wybrano domyślne 60");
                 }
-                //trzeba opakować try catchem jakby ktoś nie wybrał zwierza
+                try{
                 Errand errand = new Errand(address,pay,time,true,((Pet)petComboBox.getSelectedItem()).getDescription().getName());
                 owner.getListOfErrands().add(errand);
-                dispose();
-            }
+                dispose();}catch(Exception e1) { System.out.println("Nie wybrano zwierzaka, hmmm?");}           }
         });
         discardErrandButton.addActionListener(new ActionListener() {
             @Override

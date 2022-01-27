@@ -19,6 +19,9 @@ public class ProfileGUI extends JFrame {
     private JTextField addressTextField;
     private JTextArea bioTextArea;
     private JPanel panelMain;
+    private JLabel PHOTO;
+    private JPanel photoPanel;
+
     public void startup(ArrayList<Review> reviews_,JComboBox<Review> reviews){
         for (Review r:reviews_) {
             reviews.addItem(r);
@@ -26,12 +29,17 @@ public class ProfileGUI extends JFrame {
 
     }
     public ProfileGUI(Walker w)  {
+        PHOTO = new JLabel("PHOTO", JLabel.CENTER);
         walker = w;
         setContentPane(panelMain);
         nameField.setText(w.getDescription().getName());
         ageField.setText(String.valueOf(w.getDescription().getAge()));
         addressTextField.setText(w.getDescription().getHomeRegion().getCurrentAddress().toString());
         bioTextArea.setText(w.getDescription().getBio());
+
+
+
+
         startup(w.getReviews(),reviewsComboBox);
 
         reviewsComboBox.addActionListener(new ActionListener() {
@@ -50,6 +58,7 @@ public class ProfileGUI extends JFrame {
             ageField.setText(String.valueOf(o.getDescription().getAge()));
             addressTextField.setText(o.getDescription().getHomeRegion().getCurrentAddress().toString());
             bioTextArea.setText(o.getDescription().getBio());
+
             startup(o.getReviews(),reviewsComboBox);
 
             reviewsComboBox.addActionListener(new ActionListener() {
